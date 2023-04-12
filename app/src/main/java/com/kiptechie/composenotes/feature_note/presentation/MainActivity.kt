@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             ComposeNotesTheme {
                 Surface(
-                    color = MaterialTheme.colors.background
+                    color =  MaterialTheme.colors.secondary,
                 ) {
                     val navController = rememberNavController()
                     NavHost(
