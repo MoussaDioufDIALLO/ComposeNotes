@@ -21,10 +21,10 @@ class AddEditNoteViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-    private val _noteTitle = mutableStateOf(NoteTextFieldState(hint = "Enter title..."))
+    private val _noteTitle = mutableStateOf(NoteTextFieldState(hint = "Entrer le titre..."))
     val noteTitle: State<NoteTextFieldState> = _noteTitle
 
-    private val _noteContent = mutableStateOf(NoteTextFieldState(hint = "Enter some content..."))
+    private val _noteContent = mutableStateOf(NoteTextFieldState(hint = "Enter le contenu..."))
     val noteContent: State<NoteTextFieldState> = _noteContent
 
     private val _noteColor = mutableStateOf(Note.noteColors.random().toArgb())
@@ -104,7 +104,7 @@ class AddEditNoteViewModel @Inject constructor(
                     } catch (e: InvalidNoteException) {
                         _eventFlow.emit(
                             UiEvent.ShowSnackBar(
-                                message = e.message ?: "Couldn't save note"
+                                message = e.message ?: "Impossible d'enregistrer la note"
                             )
                         )
                     }

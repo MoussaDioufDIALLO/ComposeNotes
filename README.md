@@ -13,13 +13,12 @@ https://user-images.githubusercontent.com/40039858/165564908-d4704761-58df-47c8-
  ## Installation
 Clone this repository and import into **Android Studio**
 ```bash
-git clone git@github.com:kiptechie/ComposeNotes.git
+git clone git@github.com:MoussaDioufDIALLO/ComposeNotes.git
 ```
 
 ## Maintainers
-This project is mantained by:
-* [Kiptechie](https://github.com/kiptechie)
-
+This project is maintained by:
+* [MoussaDioufDIALLO](https://github.com/MoussaDioufDIALLO)
 
 ## Contributing
 1. Fork it

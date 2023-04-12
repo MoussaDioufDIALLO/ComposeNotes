@@ -1,13 +1,14 @@
 package com.kiptechie.composenotes.feature_note.presentation.notes
 
 import androidx.compose.animation.*
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Mic
 import androidx.compose.material.icons.filled.Sort
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
@@ -22,6 +23,8 @@ import com.kiptechie.composenotes.feature_note.presentation.notes.components.Ord
 import com.kiptechie.composenotes.feature_note.presentation.util.Screen
 import kotlinx.coroutines.launch
 
+
+@OptIn(ExperimentalFoundationApi::class)
 @ExperimentalAnimationApi
 @Composable
 fun NotesScreen(
@@ -34,16 +37,34 @@ fun NotesScreen(
 
     Scaffold(
         floatingActionButton = {
-            FloatingActionButton(
-                onClick = {
-                    navController.navigate(Screen.AddEditNotesScreen.route)
-                },
-                backgroundColor = MaterialTheme.colors.primary
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(16.dp),
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                Icon(
-                    imageVector = Icons.Default.Add,
-                    contentDescription = "Add note"
-                )
+                FloatingActionButton(
+                    onClick = {
+                        navController.navigate(Screen.AddEditNotesScreen.route)
+                    },
+                    backgroundColor = MaterialTheme.colors.primary,
+                    modifier = Modifier.padding(end = 16.dp)
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Add,
+                        contentDescription = "Add note"
+                    )
+                }
+                FloatingActionButton(
+                    onClick = {
+                        // Code pour l'enregistrement vocal
+                    },
+                    backgroundColor = MaterialTheme.colors.primary,
+                    modifier = Modifier.padding(start = 16.dp)
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Mic,
+                        contentDescription = "Record voice"
+                    )
+                }
             }
         },
         scaffoldState = scaffoldState
@@ -59,7 +80,7 @@ fun NotesScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "Compose Note",
+                    text = "Toutes les Notes",
                     style = MaterialTheme.typography.h4
                 )
                 IconButton(
@@ -89,7 +110,8 @@ fun NotesScreen(
                 )
             }
             Spacer(modifier = Modifier.height(16.dp))
-            LazyColumn(
+            LazyVerticalGrid(
+                cells = GridCells.Fixed(2),
                 modifier = Modifier.fillMaxSize(),
             ) {
                 items(state.notes) { note ->
@@ -97,6 +119,8 @@ fun NotesScreen(
                         note = note,
                         modifier = Modifier
                             .fillMaxWidth()
+                            .aspectRatio(1f)
+                            .padding(8.dp)
                             .clickable {
                                 navController.navigate(
                                     Screen.AddEditNotesScreen.route +
@@ -116,9 +140,9 @@ fun NotesScreen(
                             }
                         }
                     )
-                    Spacer(modifier = Modifier.height(16.dp))
                 }
             }
+
         }
     }
 }

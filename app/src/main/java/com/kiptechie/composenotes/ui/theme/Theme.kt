@@ -11,6 +11,7 @@ private val DarkColorPalette = darkColors(
     onBackground = Color.White,
     surface = LightBlue,
     onSurface = DarkGray
+
 )
 // ComposeNotesTheme
 
